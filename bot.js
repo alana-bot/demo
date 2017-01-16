@@ -49,6 +49,15 @@ newScript('profile')
   }
 
   newScript()
-    .addDialog((incoming, response) => {
+    .begin((incoming, response, stop) => {
       response.sendText('This is the main menu');
+      stop();
     })
+    .match('weather', (incoming, response, stop) => {
+      response.sendText('getting you the weather');
+      stop();
+    })
+    .addDialog((incoming, response, stop) => {
+      response.sendText('I am confused');
+      stop();
+    });
