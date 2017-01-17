@@ -14,6 +14,8 @@ newScript('profile')
   .expect(messageType.text, function(incoming, response, stop) {
     incoming.user.profile.name = incoming.message.text;
     response.sendText(`Hello ${incoming.user.profile.name}`);
+    response.endScript();
+    // Don't go on
   })
   .addDialog(function(incoming, response, stop) {
     response.sendText('How old are you?');
@@ -48,16 +50,10 @@ newScript('profile')
     return true;
   }
 
-  newScript()
-    .begin((incoming, response, stop) => {
-      response.sendText('This is the main menu');
-      stop();
-    })
-    .match('weather', (incoming, response, stop) => {
-      response.sendText('getting you the weather');
-      stop();
-    })
+  newScript('weather')
     .addDialog((incoming, response, stop) => {
-      response.sendText('I am confused');
-      stop();
-    });
+      response.sendText('getting you the weather');
+      response.endScript();
+    })
+
+ 
