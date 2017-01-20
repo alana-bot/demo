@@ -14,7 +14,7 @@ global.addGreeting = theBot.addGreeting.bind(theBot);
 global.newScript = theBot.newScript.bind(theBot);
 global.getScript = theBot.getScript.bind(theBot);
 
-// theBot.turnOnDebug();
+theBot.turnOnDebug();
 
 function extension(element) {
   var extName = path.extname(element);

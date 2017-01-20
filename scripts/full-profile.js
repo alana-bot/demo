@@ -9,8 +9,6 @@ newScript('full-profile')
   .expect(messageType.text, function(incoming, response, stop) {
     incoming.user.profile.name = incoming.message.text;
     response.sendText(`Hello ${incoming.user.profile.name}`);
-    response.endScript();
-    // Don't go on
   })
   .addDialog(function(incoming, response, stop) {
     response.sendText('How old are you?');
