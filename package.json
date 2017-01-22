@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "bluebird": "^3.4.7",
-    "botler": "../",
+    "botler": "fyndme/bot-framework.git#v2.0",
     "lodash": "^4.17.4",
     "mocha": "^3.2.0"
   }
