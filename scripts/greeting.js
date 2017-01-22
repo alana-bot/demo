@@ -1,4 +1,4 @@
 addGreeting(function(user, response) {
   response.sendText('Welome. I\'m a demo for botler');
-  response.startScript('full-profile');
+  response.startScript('echo');
 });

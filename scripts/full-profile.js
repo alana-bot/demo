@@ -1,19 +1,22 @@
 newScript('full-profile')
-  .match('general', 'help', function(incoming, response, stop) {
+  .intent.always('general', 'help', function(incoming, response, stop) {
     response.sendText('this is a helpfully specific help message');
-  }).force
-  .addDialog(function(incoming, response, stop) {
+  })
+  .intent.always('general', 'stop', (incoming, response, stop) =>{
+    response.startScript();
+  })
+  .dialog(function(incoming, response, stop) {
     incoming.user.profile = {};
     response.sendText('What\'s your name?');
   })
-  .expect(messageType.text, function(incoming, response, stop) {
+  .expect.text(function(incoming, response, stop) {
     incoming.user.profile.name = incoming.message.text;
     response.sendText(`Hello ${incoming.user.profile.name}`);
   })
-  .addDialog(function(incoming, response, stop) {
+  .dialog(function(incoming, response, stop) {
     response.sendText('How old are you?');
   })
-  .expect(messageType.text, function(incoming, response, stop) {
+  .expect.text(function(incoming, response, stop) {
     if (isNaN(parseInt(incoming.message.text, 10))) {
       stop();
     }
@@ -23,10 +26,10 @@ newScript('full-profile')
   .catch(function(incoming, response, stop) {
     response.sendText('I only understand numbers like 21 or 43. Try again');
   })
-  .addDialog(function(incoming, response, stop) {
+  .dialog(function(incoming, response, stop) {
     response.sendText('What\'s your email?');
   })
-  .expect(messageType.text, function(incoming, response, stop) {
+  .expect.text(function(incoming, response, stop) {
     if (isValidEmail(incoming.message.text) === false) {
       stop();
     }

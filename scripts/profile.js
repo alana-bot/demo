@@ -1,18 +1,15 @@
 newScript('profile')
-  .match('general', 'help', function(incoming, response, stop) {
-    response.sendText('this is a helpfully specific help message');
-  }).force
-  .addDialog(function(incoming, response, stop) {
+  .dialog(function(incoming, response, stop) {
     incoming.user.profile = {};
     response.sendText('Hi! What is your name?');
   })
-  .expect(messageType.text, function(incoming, response, stop) {
+  .expect.text(function(incoming, response, stop) {
     incoming.user.profile.name = incoming.message.text;
   })
-  .addDialog(function(incoming, response, stop) {
+  .dialog(function(incoming, response, stop) {
     response.sendText('What\'s your email address?');
   })
-  .expect(messageType.text, function(incoming, response, stop) {
+  .expect.text(function(incoming, response, stop) {
     if (isValidEmail(incoming.message.text) === false) {
       stop();
     }

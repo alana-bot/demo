@@ -12,10 +12,17 @@
     // .button.always(['specific-payload', 'a-payload'], (incoming, response, stop) => {
 
     // })
-    .match('weather', (incoming, response, stop) => {
+    .intent('weather', (incoming, response, stop) => {
       response.startScript('weather');
     })
-    .addDialog((incoming, response, stop) => {
-      response.sendText('I am confused');
+    .button('specific-payload', (incoming, response, stop) =>{
+      // catch a specific postback
+    })
+    .button((incoming, response, stop) => {
+      // catch all postbacks
+      console.log('check buttons');
+    })
+    .dialog((session, response, stop) => {
+      response.sendText('I am confused'); 
       stop();
     });

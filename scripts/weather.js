@@ -1,5 +1,5 @@
 newScript('weather')
-  .addDialog((incoming, response, stop) => {
+  .dialog((incoming, response, stop) => {
     response.sendText('getting you the weather');
     response.endScript();
   })
