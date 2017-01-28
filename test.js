@@ -44,7 +44,8 @@ listing
     require(file);
   });
 
-var tester = new Botler.Platforms.TestPlatform(bot);
+var Testing = require('botler-platform-testing');
+var tester = new Testing.Platform(bot);
 global.newTest = tester.newTest.bind(tester);
 bot.addPlatform(tester);
 

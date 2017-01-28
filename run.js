@@ -28,8 +28,10 @@ listing
     require(file);
   });
 
-var shellInput = new Botler.Platforms.Console(bot);
-var web = new Botler.Platforms.Web(bot);
+var Shell = require('botler-platform-console').default;
+var shellInput = new Shell(bot);
+var Web = require('botler-platform-web').default;
+var web = new Web(bot);
 
 bot.addPlatform(shellInput);
 bot.addPlatform(web);
