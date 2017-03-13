@@ -1,7 +1,2 @@
-template for Botler
-
-starting the template
-```bash
-$ npm install
-$ npm start
-```
+# Demos using alana
+- [Trivia](https://github.com/alana-bot/demo-trivia)
